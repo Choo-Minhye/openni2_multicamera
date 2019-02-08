@@ -68,7 +68,7 @@ std::vector <device_info> getCamerasInfo() {
   // Get the connected OpenNI2 devices
   boost::shared_ptr<std::vector<openni2_wrapper::OpenNI2DeviceInfo> > device_infos = manager.getConnectedDeviceInfos();
   
-  // Iterate over the devices, asking the user for labels and generating the proper include tag
+  // Iterate over the devices, getting the relevant data of each one
   for (size_t i = 0; i < device_infos->size(); ++i)
   {
     try {

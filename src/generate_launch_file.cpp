@@ -216,6 +216,7 @@ vector<device_info> getCamerasInfoWithLabel()
     device_id = os2.str();
     
     cout << "Showing the RGB image associated with camera " << device_id << endl;
+    cout << "Please focus the image window, see the related image and press a key when the camera has been identified. Then, return to this window and enter its label.\n";
 
     try {
       img_num = 0;

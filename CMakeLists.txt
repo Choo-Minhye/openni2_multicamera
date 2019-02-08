@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.4.6)
+if(COMMAND cmake_policy)
+  cmake_policy(SET CMP0003 NEW)
+endif(COMMAND cmake_policy)
+
 project(openni2_multicamera)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
 find_package(catkin REQUIRED openni2_camera camera_info_manager dynamic_reconfigure image_transport  nodelet sensor_msgs nav_msgs roscpp message_generation cv_bridge)
 
@@ -13,16 +16,16 @@ set(LIBS ${LIBS} ${OpenCV_LIBRARIES} tinyxml)
 find_package(PkgConfig)
 
 set(CMAKE_CXX_FLAGS -std=c++11)
-# set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Debug)
 
 catkin_package(
   LIBRARIES multicamera_driver_lib
   CATKIN_DEPENDS openni2_camera camera_info_manager dynamic_reconfigure image_transport nodelet sensor_msgs roscpp message_runtime cv_bridge
-  DEPENDS libopenni2
+  # DEPENDS libopenni2
 )
 
-include_directories(include 
-                    ${catkin_INCLUDE_DIRS} 
+include_directories(include
+                    ${catkin_INCLUDE_DIRS}
                     ${Boost_INCLUDE_DIRS}
                     ${PC_OPENNI2_INCLUDE_DIRS}
                     )
